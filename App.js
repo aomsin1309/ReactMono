@@ -19,12 +19,15 @@ var highscore = 0;
 
 export default function App() {
   const [uid_login, setUid] = useState();
+  const onLogoutHandler = () => {
+    setUid(null);
+  }
   const startfillinHandler = (uidNumber) => {
     setUid(uidNumber);
   }
   let content = <Login onStartApp={startfillinHandler}/>
   if(uid_login) {
-    content = <Fillin uid_ID = {uid_login} />
+    content = <Fillin uid_ID = {uid_login}  onLogout={onLogoutHandler}/>
   }
   return (
     <View style={styles.screen}>
